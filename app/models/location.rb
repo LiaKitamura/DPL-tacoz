@@ -1,4 +1,7 @@
 class Location < ActiveRecord::Base
+  include PgSearch
+  # pg_search_scope :search, against: [:street_address, :city, :state]
+  multisearchable against: [:street_address, :city, :state]
 
   # since we don't have an address field we need to make an address method to create address
   geocoded_by :address

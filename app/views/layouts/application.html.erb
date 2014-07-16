@@ -9,7 +9,14 @@
 <body>
   <div class="container">
     <header id='site-header'>
-      <%= link_to(image_tag('default_logo.jpg'), root_path) %>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= link_to(image_tag('default_logo.jpg'), root_path) %>
+        </div>
+        <div class="col-sm-8">
+          <%= render('shared/topsearch') %>
+        </div>
+      </div>
       <%= render('shared/topnav') %>
     </header>
     <section id='site-content'>

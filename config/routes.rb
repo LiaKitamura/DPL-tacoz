@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :menu_items, only: [:index, :show], path: 'our-food'
   get '/our-vegetarian-food' => 'menu_items#vegetarian'
   resources :locations, only: [:index, :show]
+  get '/search' => 'search_results#index'
 
   # namespacing is pretty much just for organization. also restricts public from doing unwanted stuff.
   namespace :admin do

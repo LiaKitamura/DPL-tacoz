@@ -1,4 +1,11 @@
 class MenuItem < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:name, :description]
+
+  # pg_search_scope :search, against: [:name, :description], associated_against: {
+  #   ingredients: [:name]
+  # }
+
   mount_uploader :picture, MenuItemPictureUploader
   has_many :ingredients
 
@@ -19,6 +26,10 @@ class MenuItem < ActiveRecord::Base
   def self.vegetarian
     # scoped to class method on itself to return on only vegetarian items
     where(vegetarian: true)
+  end
+
+  def ingredient_names
+    ingredients.pluck(:name).join(', ')
   end
 
   private
