@@ -22,6 +22,10 @@ class Location < ActiveRecord::Base
     "#{street_address} #{street_address2}, #{city}, #{state} #{zip}, US"
   end
 
+  def name
+    address
+  end
+
   private
 
   def has_blank_attributes(employee_attrs)
