@@ -3,7 +3,7 @@ class MenuItem < ActiveRecord::Base
 
   #  the indexes can take several arguments. type: string is the default if not specified
   mapping do
-    indexes :name, boost: 10
+    indexes :name, boost: 10, type: 'string'
     indexes :description, type: 'string'
   end
 

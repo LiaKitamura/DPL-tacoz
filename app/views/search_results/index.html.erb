@@ -3,3 +3,5 @@
 <% @results.results.each do |result| %>
   <%= link_to(result.name, menu_item_path(result.id)) %>
 <% end %>
+
+<h2>Found <%= pluralize(@results.size, 'result') %></h2>

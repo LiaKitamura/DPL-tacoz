@@ -1,14 +1,26 @@
+<div class="pull-right">
+  <p>Find a location</p>
+  <form method="get" action="<%= location_search_path %>">
+    <input type="search" name="q" class="form-control" placeholder="Search Locations" />
+    <select name="distance">
+      <option value="1">1 mile</option>
+      <option value="5">5 miles</option>
+      <option value="10">10 miles</option>
+    </select>
+    <input type="text" name="latitude" value="" placeholder="Your latitude" />
+    <input type="text" name="longitude" value="" placeholder="Your longitude" />
+    <input type="submit" class="btn btn-info" value="Find!" />
+  </form>
+</div>
 <h1>Our Locations</h1>
-
 <div class="row">
   <div class="col-sm-12">
     <div id="full-map">
-      
+
     </div>
   </div>
 </div>
-
-<% @locations.in_groups_of(4, false) do |group|  %>
+<% @locations.in_groups_of(4, false) do |group| %>
   <div class="row">
     <% group.each do |location| %>
       <div class="col-sm-3">
@@ -16,7 +28,7 @@
           <%= location.street_address %> <%= location.street_address2 %><br />
           <%= location.city %>, <%= location.state %> <%= location.zip %>
         </address>
-        <a href='<%= location_path(location) %>' class='btn btn-default'>View Map</a>
+        <a href="<%= location_path(location) %>" class="btn btn-default">View Map</a>
       </div>
     <% end %>
   </div>
