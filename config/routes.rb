@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   root 'site#index'
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   resources :locations, only: [:index, :show]
   get '/search' => 'search_results#index'
 
+  mount Sidekiq::Web => '/sidekiq'
   # namespacing is pretty much just for organization. also restricts public from doing unwanted stuff.
   namespace :admin do
     get '/' => 'base#index'

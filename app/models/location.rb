@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+  include Indexable
   include PgSearch
   # pg_search_scope :search, against: [:street_address, :city, :state]
   multisearchable against: [:street_address, :city, :state]
@@ -31,5 +32,4 @@ class Location < ActiveRecord::Base
   def has_blank_attributes(employee_attrs)
     employee_attrs['name'].blank?
   end
-
 end

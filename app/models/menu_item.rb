@@ -1,4 +1,5 @@
 class MenuItem < ActiveRecord::Base
+  include Indexable
   include PgSearch
   multisearchable against: [:name, :description]
 
